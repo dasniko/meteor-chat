@@ -1,0 +1,56 @@
+<head>
+    <title>MeteorChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    {{> chat}}
+</body>
+
+<template name="chat">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand">MeteorChat</a>
+            <ul class="nav pull-right">
+                <li><a>{{loginButtons align="right"}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+            {{#if currentUser}}
+            <div class="row-fluid">
+                <div class="span12 well">
+                    {{> input}}
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12 well">
+                    {{> messages}}
+                </div>
+            </div>
+            {{else}}
+            <div class="hero-unit">
+                <h1>Welcome to MeteorChat</h1>
+                <p>Please login!</p>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="input">
+    <input type="text" id="msg" placeholder="Your message goes here..." style="width: 30em">
+    <input type="button" value="Send message" class="btn btn-primary sendMsg">
+</template>
+
+<template name="messages">
+    <div id="messages" style="max-height: 20em; overflow: auto">
+        {{#each messages}}
+            {{> message}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="message">
+    <p><strong>{{user}}:</strong> {{msg}}</p>
+</template>
