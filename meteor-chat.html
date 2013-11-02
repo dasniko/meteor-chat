@@ -7,15 +7,21 @@
 </body>
 
 <template name="chat">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <a class="brand">MeteorChat</a>
-            <ul class="nav pull-right">
-                <li><a>{{loginButtons align="right"}}</a></li>
-            </ul>
-        </div>
-    </div>
     <div class="container">
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <a class="brand" href="#">MeteorChat</a>
+                <ul class="nav">
+                    <li><a href="https://github.com/dasniko/meteor-chat" target="_blank">Source</a></li>
+                    <li><a href="http://www.n-k.de" target="_blank">Contact</a></li>
+                </ul>
+                <ul class="nav pull-right">
+                    <li><a>{{loginButtons align="right"}}</a></li>
+                </ul>
+            </div>
+        </div>
+
         {{#if currentUser}}
         <div class="row-fluid">
             <div class="span12 well">
@@ -36,11 +42,12 @@
             <p>Please login!</p>
         </div>
         {{/if}}
+
     </div>
 </template>
 
 <template name="input">
-    <input type="text" id="msg" placeholder="Your message goes here..." style="width: 50%">
+    <input type="text" id="msg" placeholder="Your message goes here..." style="width: 50%; margin-bottom: 0px">
     <input type="button" value="Send message" class="btn btn-primary sendMsg">
 </template>
 
