@@ -51,6 +51,10 @@ if (Meteor.isClient) {
     Template.room.roomstyle = function() {
         return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
     }
+
+    Template.chat.release = function() {
+        return Meteor.release;
+    }
 }
 
 if (Meteor.isServer) {
