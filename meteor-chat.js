@@ -40,7 +40,7 @@ if (Meteor.isClient) {
 
     Template.rooms.events({
         'click li': function(e) {
-            Session.set("roomname", e.srcElement.innerText);
+            Session.set("roomname", e.target.innerText);
         }
     });
 
