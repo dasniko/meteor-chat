@@ -32,11 +32,11 @@ if (Meteor.isClient) {
 
     Template.message.timestamp = function() {
         return this.ts.toLocaleString();
-    }
+    };
 
     Template.messages.roomname = function() {
         return Session.get("roomname");
-    }
+    };
 
     Template.rooms.events({
         'click li': function(e) {
@@ -46,15 +46,15 @@ if (Meteor.isClient) {
 
     Template.rooms.rooms = function() {
         return Rooms.find();
-    }
+    };
 
     Template.room.roomstyle = function() {
         return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
-    }
+    };
 
     Template.chat.release = function() {
         return Meteor.release;
-    }
+    };
 }
 
 if (Meteor.isServer) {
