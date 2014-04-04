@@ -5,8 +5,6 @@
 
 standard-app-packages
 autopublish
-insecure
 bootstrap
-accounts-base
 accounts-ui
 accounts-password
