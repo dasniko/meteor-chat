@@ -6,6 +6,8 @@ if (Meteor.isClient) {
         passwordSignupFields: 'USERNAME_ONLY'
     });
 
+	Meteor.subscribe("rooms");
+	Meteor.subscribe("messages");
     Session.setDefault("roomname", "Meteor");
 
     Template.input.events({
@@ -67,6 +69,7 @@ if (Meteor.isServer) {
             });
         }
     });
+	
     Rooms.deny({
         insert: function (userId, doc) {
 		    return true;
@@ -93,5 +96,12 @@ if (Meteor.isServer) {
 	    insert: function (userId, doc) {
 		    return (userId !== null);
 		}
+	});
+	
+	Meteor.publish("rooms", function () {
+	    return Rooms.find();
+	});
+	Meteor.publish("messages", function () {
+	    return Messages.find({}, {sort: {ts: -1}});
 	});
 }
