@@ -28,35 +28,44 @@ if (Meteor.isClient) {
     el.focus();
   };
 
-  Template.messages.messages = function() {
-    return Messages.find({room: Session.get("roomname")}, {sort: {ts: -1}});
-  };
-
-  Template.message.timestamp = function() {
-    return this.ts.toLocaleString();
-  };
-
-  Template.messages.roomname = function() {
-    return Session.get("roomname");
-  };
+  Template.messages.helpers({
+    messages: function() {
+      return Messages.find({room: Session.get("roomname")}, {sort: {ts: -1}});
+    },
+	roomname: function() {
+      return Session.get("roomname");
+    }
+  });
+  
+  Template.message.helpers({
+    timestamp: function() {
+      return this.ts.toLocaleString();
+    }
+  });
 
   Template.rooms.events({
     'click li': function(e) {
       Session.set("roomname", e.target.innerText);
     }
   });
+  
+  Template.rooms.helpers({
+    rooms: function() {
+      return Rooms.find();
+    }
+  });
+  
+  Template.room.helpers({
+	roomstyle: function() {
+      return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
+    }
+  });
 
-  Template.rooms.rooms = function() {
-    return Rooms.find();
-  };
-
-  Template.room.roomstyle = function() {
-    return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
-  };
-
-  Template.chat.release = function() {
-    return Meteor.release;
-  };
+  Template.chat.helpers({
+    release: function() {
+      return Meteor.release;
+    }
+  });
 }
 
 if (Meteor.isServer) {
