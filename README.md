@@ -10,6 +10,4 @@ Used add-on packages (for convenience only!):
 * `bootstrap` for beautifying the UI
 * `accounts-password` and `accounts-ui` for having the user authenticated right out of the box
 
-Application is deployed at <http://chat.n-k.de>
-
 Feel free to fork/copy/whatever...
